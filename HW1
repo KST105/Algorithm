@@ -1,0 +1,74 @@
+def sum_even_numbers(array: list[int]) -> int:
+
+    if not isinstance(array, list):
+        raise TypeError("The input is not a list")
+
+    if len(array) > 10**5:
+        raise ValueError("Too many numbers")
+
+
+    sum = 0
+    for i in array:
+        if i < -2*10**4 or i > 2*10**4:
+            raise TypeError("The input data is not within the range of valid values")
+        else:
+            if i % 2 == 0:
+                sum += i
+
+    if sum < 0:
+        return 1
+    else:
+        return sum
+
+def most_repeated_number(array: list[int]) -> int:
+
+    if not isinstance(array, list):
+        raise TypeError("The input is not a list")
+
+    if len(array) > 10**5:
+        raise ValueError("Too many numbers")
+
+    max_count_repetitions = 0
+    current_index = 0
+
+    for i in array:
+        if i < 1 or i > 2 * 10 ** 4:
+            raise TypeError("The input data is not within the range of valid values")
+        else:
+            count_repetitions = 0
+
+            for j in array:
+                if array[i] == array[j]:
+                    count_repetitions += 1
+
+            if count_repetitions > max_count_repetitions:
+                max_count_repetitions = count_repetitions
+                current_index = i
+            elif count_repetitions == max_count_repetitions:
+                if array[i] < array[current_index]:
+                    current_index = i
+
+    return array[current_index]
+
+def search_indexes_equal_target_value(array: list[int], target: int) -> list[int]:
+
+    if not isinstance(array, list):
+        raise TypeError("The input is not a list")
+
+    if not isinstance(target, int):
+        raise TypeError("The input is not a int")
+
+    if len(array) <= 2 or len(array) >= 104:
+        raise ValueError("The input not within the range of acceptable values")
+
+    if target <= -109 or target >= 109:
+        raise ValueError("The input not within the range of acceptable values")
+
+    for item in array:
+        if item <= -109 or item >= 109:  raise ValueError()
+
+    for i in array[0::]:
+        for j in array[i+1::]:
+            if array[i] + array[j] == target:
+                suitable_indexes = [i, j]
+                return suitable_indexes
