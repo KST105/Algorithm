@@ -1,0 +1,55 @@
+def search_factorial_number(n: int) -> int:
+
+    if not isinstance(n, int): raise TypeError(f"The data type does not recommend {int}.")
+    if n < 0 or n > 20: raise ValueError(f"{n} is not within the range of valid values.")
+
+    factorial = 1
+
+    for i in range(1, n + 1):
+        factorial *= i
+
+    return factorial
+
+#  Временная сложность алгоритма O(n)
+
+def print_fibonacci_number(n: int) -> list[int]:
+
+    if not isinstance(n, int): raise TypeError(f"The data type does not recommend {int}.")
+    if n < 0: raise ValueError(f"{n} is not within the range of valid values.")
+
+    fibonacci_numbers = [0, 1]
+
+    while (fibonacci_numbers[-1] + fibonacci_numbers[-2]) <= n :
+
+        fibonacci_numbers.append(fibonacci_numbers[-1] + fibonacci_numbers[-2])
+
+    return fibonacci_numbers
+
+# Временная сложность алгоритма O(n)
+
+def count_ones(n: int) -> int:
+
+    if not isinstance(n, int): raise TypeError(f"The data type does not recommend {int}.")
+    if n < 0: raise ValueError(f"{n} is not within the range of valid values.")
+
+    count = 0
+    while n > 0:
+        if n % 2 == 1:
+            count += 1
+        n //= 2
+
+    return count
+
+def checking_is_palindrome(x: int) -> bool:
+
+    if not isinstance(x, int): raise TypeError(f"The data type does not recommend {int}.")
+
+    number = str(x)
+
+    for i in range(0, len(number)//2):
+        if number[i] != number[-1-i]:
+            return False
+
+    return True
+
+#  Временная сложность алгоритма O(n)
